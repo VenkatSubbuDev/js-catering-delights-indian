@@ -34,11 +34,11 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-center">
                 <Phone className="h-4 w-4 mr-3 text-saffron" />
-                <span className="text-background/80">+91 98765 43210</span>
+                <span className="text-background/80">733 737 5347</span>
               </div>
               <div className="flex items-center">
                 <Mail className="h-4 w-4 mr-3 text-saffron" />
-                <span className="text-background/80">info@jscaterings.com</span>
+                <span className="text-background/80">jscatering.in</span>
               </div>
               <div className="flex items-center">
                 <MapPin className="h-4 w-4 mr-3 text-saffron" />

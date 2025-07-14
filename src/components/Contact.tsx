@@ -7,13 +7,13 @@ export function Contact() {
     {
       icon: Phone,
       title: "Phone",
-      content: "+91 98765 43210",
+      content: "733 737 5347",
       subtitle: "Call us for immediate assistance"
     },
     {
       icon: Mail,
       title: "Email",
-      content: "info@jscaterings.com",
+      content: "jscatering.in",
       subtitle: "Send us your requirements"
     },
     {
