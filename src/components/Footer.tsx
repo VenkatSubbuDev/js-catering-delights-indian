@@ -50,7 +50,7 @@ export function Footer() {
 
         <div className="border-t border-background/20 mt-8 pt-8 text-center">
           <p className="text-background/60">
-            © 2024 JS Caterings. All rights reserved. | Authentic Indian Cuisine for Every Occasion
+            © 2025 JS Caterings. All rights reserved. | Authentic Indian Cuisine for Every Occasion
           </p>
         </div>
       </div>
