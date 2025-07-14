@@ -19,8 +19,8 @@ export function Contact() {
     {
       icon: MapPin,
       title: "Location",
-      content: "Mumbai, Maharashtra",
-      subtitle: "Serving across the city"
+      content: "Nandyal, Andhra Pradesh",
+      subtitle: "Serving across the region"
     },
     {
       icon: Clock,

@@ -42,7 +42,7 @@ export function Footer() {
               </div>
               <div className="flex items-center">
                 <MapPin className="h-4 w-4 mr-3 text-saffron" />
-                <span className="text-background/80">Mumbai, Maharashtra</span>
+                <span className="text-background/80">Nandyal, Andhra Pradesh</span>
               </div>
             </div>
           </div>
