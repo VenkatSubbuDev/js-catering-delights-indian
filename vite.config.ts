@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/js-catering-delights-indian/", // 👈 must match your repo name
+  base: "/js-catering-delights-indian/", // 👈 important!
   server: {
     host: "::",
     port: 8080,
