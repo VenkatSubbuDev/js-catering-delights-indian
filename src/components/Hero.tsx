@@ -26,11 +26,26 @@ export function Hero() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant="hero" size="lg" className="text-lg px-8 py-6">
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="text-lg px-8 py-6"
+              onClick={() => window.open('tel:9347670599', '_self')}
+            >
               <Phone className="mr-2 h-5 w-5" />
               Book Your Event
             </Button>
-            <Button variant="warm" size="lg" className="text-lg px-8 py-6">
+            <Button 
+              variant="warm" 
+              size="lg" 
+              className="text-lg px-8 py-6"
+              onClick={() => {
+                const element = document.getElementById('quote');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
               <Mail className="mr-2 h-5 w-5" />
               Get Quote
             </Button>

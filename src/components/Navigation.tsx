@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
+import { QuoteDialog } from "./QuoteDialog";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [showQuoteDialog, setShowQuoteDialog] = useState(false);
 
   const navItems = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Menu", href: "#menu" },
     { name: "Services", href: "#services" },
+    { name: "Get Quote", href: "#quote" },
     { name: "Contact", href: "#contact" }
   ];
 
@@ -35,9 +38,20 @@ export function Navigation() {
   }, []);
 
   const scrollToSection = (href: string) => {
-    const element = document.getElementById(href.substring(1));
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (href === "#quote") {
+      // Check if we're on the quote section, if not scroll to it
+      const element = document.getElementById('quote');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        // If quote section doesn't exist, show dialog
+        setShowQuoteDialog(true);
+      }
+    } else {
+      const element = document.getElementById(href.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     setIsOpen(false);
   };
@@ -70,9 +84,13 @@ export function Navigation() {
           </div>
 
           <div className="hidden md:block">
-            <Button variant="hero" size="sm">
+            <Button 
+              variant="hero" 
+              size="sm"
+              onClick={() => setShowQuoteDialog(true)}
+            >
               <Phone className="mr-2 h-4 w-4" />
-              Book Now
+              Get Quote
             </Button>
           </div>
 
@@ -107,15 +125,25 @@ export function Navigation() {
                 </button>
               ))}
               <div className="pt-4">
-                <Button variant="hero" size="sm" className="w-full">
+                <Button 
+                  variant="hero" 
+                  size="sm" 
+                  className="w-full"
+                  onClick={() => setShowQuoteDialog(true)}
+                >
                   <Phone className="mr-2 h-4 w-4" />
-                  Book Now
+                  Get Quote
                 </Button>
               </div>
             </div>
           </div>
         )}
       </div>
+      
+      <QuoteDialog 
+        open={showQuoteDialog} 
+        onOpenChange={setShowQuoteDialog} 
+      />
     </nav>
   );
 }

@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { FoodVarieties } from "@/components/FoodVarieties";
 import { Services } from "@/components/Services";
+import { GetQuote } from "@/components/GetQuote";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
@@ -22,6 +23,9 @@ const Index = () => {
         </section>
         <section id="services">
           <Services />
+        </section>
+        <section id="quote">
+          <GetQuote />
         </section>
         <section id="contact">
           <Contact />
