@@ -7,7 +7,7 @@ export function Contact() {
     {
       icon: Phone,
       title: "Phone",
-      content: "733 737 5347",
+      content: "93476 70599",
       subtitle: "Call us for immediate assistance"
     },
     {
@@ -73,11 +73,21 @@ export function Contact() {
             and exceptional service.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="warm" size="lg" className="text-lg px-8 py-6">
+            <Button 
+              variant="warm" 
+              size="lg" 
+              className="text-lg px-8 py-6"
+              onClick={() => window.location.href = 'tel:9347670599'}
+            >
               <Phone className="mr-2 h-5 w-5" />
               Call Now
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-white/10 border-white/20 text-primary-foreground hover:bg-white/20">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="text-lg px-8 py-6 bg-white/10 border-white/20 text-primary-foreground hover:bg-white/20"
+              onClick={() => window.location.href = 'mailto:jscatering.in@gmail.com'}
+            >
               <Mail className="mr-2 h-5 w-5" />
               Send Message
             </Button>

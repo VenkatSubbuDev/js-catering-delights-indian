@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   const navItems = [
     { name: "Home", href: "#home" },
@@ -12,6 +13,34 @@ export function Navigation() {
     { name: "Services", href: "#services" },
     { name: "Contact", href: "#contact" }
   ];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    const sections = navItems.map(item => document.getElementById(item.href.substring(1))).filter(Boolean);
+    sections.forEach(section => section && observer.observe(section));
+
+    return () => {
+      sections.forEach(section => section && observer.unobserve(section));
+    };
+  }, []);
+
+  const scrollToSection = (href: string) => {
+    const element = document.getElementById(href.substring(1));
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsOpen(false);
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -25,13 +54,17 @@ export function Navigation() {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
-                <a
+                <button
                   key={item.name}
-                  href={item.href}
-                  className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+                  onClick={() => scrollToSection(item.href)}
+                  className={`transition-colors duration-200 font-medium ${
+                    activeSection === item.href.substring(1)
+                      ? 'text-primary border-b-2 border-primary'
+                      : 'text-foreground hover:text-primary'
+                  }`}
                 >
                   {item.name}
-                </a>
+                </button>
               ))}
             </div>
           </div>
@@ -61,14 +94,17 @@ export function Navigation() {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-t border-border">
               {navItems.map((item) => (
-                <a
+                <button
                   key={item.name}
-                  href={item.href}
-                  className="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => scrollToSection(item.href)}
+                  className={`block w-full text-left px-3 py-2 transition-colors duration-200 ${
+                    activeSection === item.href.substring(1)
+                      ? 'text-primary bg-primary/10'
+                      : 'text-foreground hover:text-primary'
+                  }`}
                 >
                   {item.name}
-                </a>
+                </button>
               ))}
               <div className="pt-4">
                 <Button variant="hero" size="sm" className="w-full">
