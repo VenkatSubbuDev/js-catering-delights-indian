@@ -1,9 +1,29 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { useEffect, useRef, useState } from "react";
 import foodVarietiesImage from "@/assets/food-varieties.jpg";
 import dessertsImage from "@/assets/desserts.jpg";
 import streetFoodImage from "@/assets/street-food.jpg";
 
 export function FoodVarieties() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
   const categories = [
     {
       title: "Traditional Cuisine",
@@ -26,9 +46,11 @@ export function FoodVarieties() {
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section ref={sectionRef} className="py-20 bg-background">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Our Food Varieties
           </h2>
@@ -40,7 +62,17 @@ export function FoodVarieties() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {categories.map((category, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-warm transition-all duration-300 transform hover:-translate-y-2">
+            <Card 
+              key={index} 
+              className={`overflow-hidden hover:shadow-warm transition-all duration-700 transform hover:-translate-y-2 ${
+                isVisible 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-12'
+              }`}
+              style={{ 
+                transitionDelay: isVisible ? `${index * 200}ms` : '0ms' 
+              }}
+            >
               <div className="relative h-64 overflow-hidden">
                 <img 
                   src={category.image} 
@@ -61,7 +93,17 @@ export function FoodVarieties() {
                 <div className="space-y-2">
                   <h4 className="font-semibold text-foreground mb-3">Popular Items:</h4>
                   {category.items.map((item, itemIndex) => (
-                    <div key={itemIndex} className="flex items-center text-muted-foreground">
+                    <div 
+                      key={itemIndex} 
+                      className={`flex items-center text-muted-foreground transition-all duration-500 ${
+                        isVisible 
+                          ? 'opacity-100 translate-x-0' 
+                          : 'opacity-0 translate-x-4'
+                      }`}
+                      style={{ 
+                        transitionDelay: isVisible ? `${(index * 200) + (itemIndex * 100) + 400}ms` : '0ms' 
+                      }}
+                    >
                       <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
                       {item}
                     </div>
