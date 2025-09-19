@@ -113,6 +113,37 @@ export function FoodVarieties() {
             </Card>
           ))}
         </div>
+
+        {/* Animated Food Items with Smoke Effect */}
+        <div className="relative mt-12 overflow-hidden">
+          <div className={`flex space-x-8 transition-all duration-1000 ${
+            isVisible ? 'opacity-100' : 'opacity-0'
+          }`}>
+            {/* Animated food items moving horizontally */}
+            <div className="flex animate-[scroll-horizontal_20s_linear_infinite]">
+              <div className="flex space-x-8 whitespace-nowrap">
+                {["🍚", "🍜", "🥘", "🫓", "🍛", "🧄", "🌶️", "🥥", "🍚", "🍜", "🥘", "🫓"].map((food, index) => (
+                  <div
+                    key={index}
+                    className="relative text-4xl"
+                    style={{
+                      animation: `float ${3 + (index % 3)}s ease-in-out infinite`,
+                      animationDelay: `${index * 0.3}s`
+                    }}
+                  >
+                    {food}
+                    {/* Smoke effect */}
+                    <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
+                      <div className="smoke-1"></div>
+                      <div className="smoke-2"></div>
+                      <div className="smoke-3"></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

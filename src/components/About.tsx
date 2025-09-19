@@ -114,7 +114,7 @@ export function About() {
           {features.map((feature, index) => (
             <Card 
               key={index} 
-              className={`text-center hover:shadow-warm transition-all duration-700 transform hover:-translate-y-2 ${
+              className={`text-center hover:shadow-warm transition-all duration-200 transform hover:-translate-y-2 ${
                 isVisible 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-12'
