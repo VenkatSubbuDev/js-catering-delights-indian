@@ -54,14 +54,14 @@ export function Contact() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {contactInfo.map((info, index) => (
             <Card 
               key={index} 
               className="text-center hover:shadow-warm transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group"
               onClick={info.action}
             >
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <div className="bg-gradient-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                   <info.icon className="h-8 w-8 text-primary-foreground" />
                 </div>
