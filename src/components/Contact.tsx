@@ -26,13 +26,6 @@ export function Contact() {
       action: () => window.open("mailto:jscatering.in@gmail.com", "_self")
     },
     {
-      icon: MapPin,
-      title: "Location",
-      content: "Nandyal, Andhra Pradesh",
-      subtitle: "Serving across the region",
-      action: () => {}
-    },
-    {
       icon: Clock,
       title: "Hours",
       content: "9:00 AM - 9:00 PM",
