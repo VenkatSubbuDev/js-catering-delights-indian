@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 
 export function Contact() {
   const contactInfo = [
@@ -8,25 +8,36 @@ export function Contact() {
       icon: Phone,
       title: "Phone",
       content: "93476 70599",
-      subtitle: "Call us for immediate assistance"
+      subtitle: "Call us for immediate assistance",
+      action: () => window.open("tel:9347670599", "_self")
+    },
+    {
+      icon: MessageCircle,
+      title: "WhatsApp",
+      content: "93476 70599",
+      subtitle: "Chat with us instantly",
+      action: () => window.open("https://wa.me/919347670599", "_blank")
     },
     {
       icon: Mail,
       title: "Email",
       content: "jscatering.in",
-      subtitle: "Send us your requirements"
+      subtitle: "Send us your requirements",
+      action: () => window.open("mailto:jscatering.in@gmail.com", "_self")
     },
     {
       icon: MapPin,
       title: "Location",
       content: "Nandyal, Andhra Pradesh",
-      subtitle: "Serving across the region"
+      subtitle: "Serving across the region",
+      action: () => {}
     },
     {
       icon: Clock,
       title: "Hours",
       content: "9:00 AM - 9:00 PM",
-      subtitle: "Monday to Sunday"
+      subtitle: "Monday to Sunday",
+      action: () => {}
     }
   ];
 
@@ -45,9 +56,13 @@ export function Contact() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {contactInfo.map((info, index) => (
-            <Card key={index} className="text-center hover:shadow-warm transition-all duration-300 transform hover:-translate-y-2">
+            <Card 
+              key={index} 
+              className="text-center hover:shadow-warm transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group"
+              onClick={info.action}
+            >
               <CardContent className="p-6">
-                <div className="bg-gradient-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="bg-gradient-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                   <info.icon className="h-8 w-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-2">
@@ -81,6 +96,15 @@ export function Contact() {
             >
               <Phone className="mr-2 h-5 w-5" />
               Call Now
+            </Button>
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="text-lg px-8 py-6"
+              onClick={() => window.open("https://wa.me/919347670599", "_blank")}
+            >
+              <MessageCircle className="mr-2 h-5 w-5" />
+              WhatsApp
             </Button>
             <Button 
               variant="outline" 
