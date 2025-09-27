@@ -56,47 +56,7 @@ const EventCatering = () => {
     }
   ];
 
-  const eventSizes = [
-    {
-      name: "Community Events",
-      range: "100-500 Guests",
-      price: "₹150-300 per person",
-      features: [
-        "Traditional community-style serving",
-        "Multiple food stations",
-        "Basic event coordination",
-        "Standard cleanup service"
-      ],
-      ideal: "Religious gatherings, local celebrations"
-    },
-    {
-      name: "Festival Catering",
-      range: "500-2000 Guests",
-      price: "₹120-250 per person",
-      features: [
-        "Large-scale kitchen operations",
-        "Multiple cuisine options",
-        "Professional event management",
-        "Complete setup and breakdown",
-        "Live cooking demonstrations"
-      ],
-      ideal: "Cultural festivals, major celebrations"
-    },
-    {
-      name: "Mega Events",
-      range: "2000+ Guests",
-      price: "₹100-200 per person",
-      features: [
-        "Industrial-scale food production",
-        "Multiple serving locations",
-        "Full event coordination team",
-        "Advanced logistics management",
-        "24/7 on-site support",
-        "Custom infrastructure setup"
-      ],
-      ideal: "Major festivals, government events"
-    }
-  ];
+  const eventSizes = [];
 
   return (
     <div className="min-h-screen">
@@ -193,53 +153,6 @@ const EventCatering = () => {
         </div>
       </section>
 
-      {/* Event Sizes Section */}
-      <section className="py-20 bg-background">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Event Catering Packages
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Scalable solutions designed to handle events of any size with the same attention to quality and detail.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            {eventSizes.map((eventSize, index) => (
-              <Card key={index} className="hover:shadow-warm transition-all duration-300 transform hover:-translate-y-2">
-                <CardContent className="p-8">
-                  <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-foreground mb-2">
-                      {eventSize.name}
-                    </h3>
-                    <p className="text-muted-foreground mb-4">{eventSize.range}</p>
-                    <div className="text-2xl font-bold text-primary mb-2">
-                      {eventSize.price}
-                    </div>
-                    <p className="text-sm text-muted-foreground italic">
-                      {eventSize.ideal}
-                    </p>
-                  </div>
-                  
-                  <ul className="space-y-3 mb-8">
-                    {eventSize.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-muted-foreground">
-                        <Star className="h-4 w-4 text-primary mr-3 fill-current" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <Button className="w-full" variant={index === 1 ? "default" : "outline"} asChild>
-                    <Link to="/#quote">Get Quote</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Why Choose Us Section */}
       <section className="py-20 bg-gradient-warm">

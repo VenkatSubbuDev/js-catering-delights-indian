@@ -52,44 +52,7 @@ const PrivateParties = () => {
     }
   ];
 
-  const packages = [
-    {
-      name: "Intimate Gathering",
-      guests: "2-10 People",
-      price: "₹300-600 per person",
-      features: [
-        "3-course home-style meal",
-        "Fresh, made-to-order dishes",
-        "Basic setup and service",
-        "Takeaway containers included"
-      ]
-    },
-    {
-      name: "Family Celebration",
-      guests: "10-25 People",
-      price: "₹250-500 per person",
-      features: [
-        "4-course traditional feast",
-        "Family-style serving",
-        "Table setup and decoration",
-        "Service staff included",
-        "Special dessert arrangement"
-      ]
-    },
-    {
-      name: "Grand House Party",
-      guests: "25+ People",
-      price: "₹200-400 per person",
-      features: [
-        "5-course elaborate menu",
-        "Buffet-style setup",
-        "Full event management",
-        "Professional service team",
-        "Live cooking stations",
-        "Custom cake/dessert"
-      ]
-    }
-  ];
+  const packages = [];
 
   return (
     <div className="min-h-screen">
@@ -183,48 +146,6 @@ const PrivateParties = () => {
         </div>
       </section>
 
-      {/* Packages Section */}
-      <section className="py-20 bg-background">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Private Party Packages
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Choose the perfect package for your celebration or let us create a custom solution just for you.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {packages.map((pkg, index) => (
-              <Card key={index} className="hover:shadow-warm transition-all duration-300 transform hover:-translate-y-2">
-                <CardContent className="p-8">
-                  <div className="text-center">
-                    <h3 className="text-2xl font-bold text-foreground mb-2">
-                      {pkg.name}
-                    </h3>
-                    <p className="text-muted-foreground mb-4">{pkg.guests}</p>
-                    <div className="text-2xl font-bold text-primary mb-6">
-                      {pkg.price}
-                    </div>
-                    <ul className="space-y-3 mb-8 text-left">
-                      {pkg.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center text-muted-foreground">
-                          <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    <Button className="w-full" variant={index === 1 ? "default" : "outline"} asChild>
-                      <Link to="/#quote">Choose Package</Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Personal Touch Section */}
       <section className="py-20 bg-gradient-warm">

@@ -29,44 +29,7 @@ const WeddingCatering = () => {
     }
   ];
 
-  const packages = [
-    {
-      name: "Essential Wedding Package",
-      guests: "50-100 Guests",
-      price: "Starting from ₹15,000",
-      features: [
-        "3-course traditional menu",
-        "Basic setup and serving",
-        "2 service staff",
-        "Standard presentation"
-      ]
-    },
-    {
-      name: "Premium Wedding Package",
-      guests: "100-300 Guests",
-      price: "Starting from ₹35,000",
-      features: [
-        "5-course elaborate menu",
-        "Elegant setup and decoration",
-        "4-6 professional staff",
-        "Premium presentation",
-        "Live cooking stations"
-      ]
-    },
-    {
-      name: "Royal Wedding Package",
-      guests: "300+ Guests",
-      price: "Starting from ₹75,000",
-      features: [
-        "7-course royal feast",
-        "Luxurious setup and decor",
-        "8+ expert staff",
-        "Grand presentation",
-        "Multiple live stations",
-        "Dedicated event coordinator"
-      ]
-    }
-  ];
+  const packages = [];
 
   return (
     <div className="min-h-screen">
@@ -126,55 +89,6 @@ const WeddingCatering = () => {
         </div>
       </section>
 
-      {/* Packages Section */}
-      <section className="py-20 bg-gradient-warm">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Wedding Catering Packages
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Choose from our carefully crafted packages or let us create a custom solution for your special day.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {packages.map((pkg, index) => (
-              <Card key={index} className="relative hover:shadow-warm transition-all duration-300 transform hover:-translate-y-2">
-                {index === 1 && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-bold">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-                <CardContent className="p-8">
-                  <div className="text-center">
-                    <h3 className="text-2xl font-bold text-foreground mb-2">
-                      {pkg.name}
-                    </h3>
-                    <p className="text-muted-foreground mb-4">{pkg.guests}</p>
-                    <div className="text-3xl font-bold text-primary mb-6">
-                      {pkg.price}
-                    </div>
-                    <ul className="space-y-3 mb-8">
-                      {pkg.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center text-muted-foreground">
-                          <Star className="h-4 w-4 text-primary mr-3 fill-current" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    <Button className="w-full" variant={index === 1 ? "default" : "outline"} asChild>
-                      <Link to="/#quote">Choose Package</Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <Footer />
     </div>

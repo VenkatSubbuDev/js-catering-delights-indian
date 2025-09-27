@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 import { QuoteDialog } from "./QuoteDialog";
+import { Link, useLocation } from "react-router-dom";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [showQuoteDialog, setShowQuoteDialog] = useState(false);
+  const location = useLocation();
 
   const navItems = [
     { name: "Home", href: "#home" },
@@ -38,6 +40,12 @@ export function Navigation() {
   }, []);
 
   const scrollToSection = (href: string) => {
+    // If we're not on the home page, navigate to home first
+    if (location.pathname !== '/') {
+      window.location.href = '/' + href;
+      return;
+    }
+
     if (href === "#quote") {
       // Check if we're on the quote section, if not scroll to it
       const element = document.getElementById('quote');
@@ -61,7 +69,9 @@ export function Navigation() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-primary">JS Caterings</h1>
+            <Link to="/" className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors">
+              JS Caterings
+            </Link>
           </div>
 
           {/* Desktop Navigation */}

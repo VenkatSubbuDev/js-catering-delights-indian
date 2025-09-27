@@ -29,32 +29,7 @@ const CorporateEvents = () => {
     }
   ];
 
-  const services = [
-    {
-      title: "Business Meetings",
-      description: "Light refreshments and professional service for important business discussions",
-      ideal: "5-20 people",
-      price: "₹200-500 per person"
-    },
-    {
-      title: "Corporate Conferences",
-      description: "Full-day catering with breakfast, lunch, and refreshment breaks",
-      ideal: "50-500 people",
-      price: "₹800-1,500 per person"
-    },
-    {
-      title: "Office Celebrations",
-      description: "Festive menus for office parties, achievements, and milestone celebrations",
-      ideal: "20-200 people",
-      price: "₹400-800 per person"
-    },
-    {
-      title: "Corporate Training",
-      description: "Convenient meal solutions for training sessions and workshops",
-      ideal: "10-100 people",
-      price: "₹300-600 per person"
-    }
-  ];
+  const services = [];
 
   return (
     <div className="min-h-screen">
@@ -114,44 +89,54 @@ const CorporateEvents = () => {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Corporate Benefits Section */}
       <section className="py-20 bg-gradient-warm">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Corporate Catering Services
+              Corporate Catering Benefits
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              From intimate business meetings to large corporate conferences, we have the right solution for your needs.
+              Professional catering that enhances your business image and ensures successful corporate events.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <Card key={index} className="hover:shadow-warm transition-all duration-300 transform hover:-translate-y-2">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-foreground mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {service.description}
-                  </p>
-                  <div className="space-y-2">
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <Users className="h-4 w-4 mr-2 text-primary" />
-                      Ideal for: {service.ideal}
-                    </div>
-                    <div className="flex items-center text-sm text-primary font-semibold">
-                      <Star className="h-4 w-4 mr-2" />
-                      {service.price}
-                    </div>
-                  </div>
-                  <Button className="w-full mt-6" variant="outline" asChild>
-                    <Link to="/#quote">Get Quote</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="hover:shadow-warm transition-all duration-300 transform hover:-translate-y-2">
+              <CardContent className="p-8 text-center">
+                <Briefcase className="h-16 w-16 text-primary mx-auto mb-4" />
+                <h3 className="text-xl font-bold text-foreground mb-3">
+                  Professional Image
+                </h3>
+                <p className="text-muted-foreground">
+                  Enhance your corporate reputation with high-quality food presentation and service.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-warm transition-all duration-300 transform hover:-translate-y-2">
+              <CardContent className="p-8 text-center">
+                <Clock className="h-16 w-16 text-primary mx-auto mb-4" />
+                <h3 className="text-xl font-bold text-foreground mb-3">
+                  Time Efficient
+                </h3>
+                <p className="text-muted-foreground">
+                  Save valuable time with our complete catering solutions and professional setup.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-warm transition-all duration-300 transform hover:-translate-y-2">
+              <CardContent className="p-8 text-center">
+                <Users className="h-16 w-16 text-primary mx-auto mb-4" />
+                <h3 className="text-xl font-bold text-foreground mb-3">
+                  Team Satisfaction
+                </h3>
+                <p className="text-muted-foreground">
+                  Keep your team energized and satisfied with delicious, fresh meal options.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
