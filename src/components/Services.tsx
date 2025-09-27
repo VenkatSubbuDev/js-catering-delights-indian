@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Utensils, Calendar, Truck, ChefHat } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function Services() {
   const services = [
@@ -69,8 +70,10 @@ export function Services() {
                       ))}
                     </ul>
                     
-                    <Button variant="warm" className="w-full">
-                      Learn More
+                    <Button variant="warm" className="w-full" asChild>
+                      <Link to={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                        Learn More
+                      </Link>
                     </Button>
                   </div>
                 </div>
