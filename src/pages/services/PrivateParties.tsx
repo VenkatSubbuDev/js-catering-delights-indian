@@ -3,9 +3,18 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Home, Gift, ChefHat, Users, Clock } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { QuoteDialog } from "@/components/QuoteDialog";
 
 const PrivateParties = () => {
+  const [showQuoteDialog, setShowQuoteDialog] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const occasions = [
     {
       icon: Gift,
@@ -69,11 +78,11 @@ const PrivateParties = () => {
               Intimate dining experiences for birthdays, anniversaries, and family celebrations with the warmth of home-style cooking.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" asChild>
-                <Link to="/#quote">Plan Your Party</Link>
+              <Button size="lg" variant="secondary" onClick={() => setShowQuoteDialog(true)}>
+                Plan Your Party
               </Button>
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary" asChild>
-                <Link to="/#contact">Discuss Ideas</Link>
+              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary bg-transparent" onClick={() => setShowQuoteDialog(true)}>
+                Discuss Ideas
               </Button>
             </div>
           </div>
@@ -181,6 +190,11 @@ const PrivateParties = () => {
       </section>
 
       <Footer />
+      
+      <QuoteDialog 
+        open={showQuoteDialog} 
+        onOpenChange={setShowQuoteDialog} 
+      />
     </div>
   );
 };

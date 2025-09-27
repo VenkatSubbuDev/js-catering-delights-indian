@@ -3,9 +3,18 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Users, Utensils, Star, Clock, MapPin } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { QuoteDialog } from "@/components/QuoteDialog";
 
 const WeddingCatering = () => {
+  const [showQuoteDialog, setShowQuoteDialog] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const features = [
     {
       icon: Utensils,
@@ -46,11 +55,11 @@ const WeddingCatering = () => {
               Make your special day unforgettable with our comprehensive wedding catering services featuring authentic Indian cuisine and professional service.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" asChild>
-                <Link to="/#quote">Get Wedding Quote</Link>
+              <Button size="lg" variant="secondary" onClick={() => setShowQuoteDialog(true)}>
+                Get Wedding Quote
               </Button>
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary" asChild>
-                <Link to="/#contact">Contact Us</Link>
+              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary bg-transparent" onClick={() => setShowQuoteDialog(true)}>
+                Contact Us
               </Button>
             </div>
           </div>
@@ -91,6 +100,11 @@ const WeddingCatering = () => {
 
 
       <Footer />
+      
+      <QuoteDialog 
+        open={showQuoteDialog} 
+        onOpenChange={setShowQuoteDialog} 
+      />
     </div>
   );
 };

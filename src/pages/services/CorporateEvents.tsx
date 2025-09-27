@@ -3,9 +3,18 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Briefcase, Coffee, Presentation, Clock, Users, Star } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { QuoteDialog } from "@/components/QuoteDialog";
 
 const CorporateEvents = () => {
+  const [showQuoteDialog, setShowQuoteDialog] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const features = [
     {
       icon: Briefcase,
@@ -46,11 +55,11 @@ const CorporateEvents = () => {
               Professional catering solutions for business meetings, conferences, and corporate gatherings that enhance your professional image.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" asChild>
-                <Link to="/#quote">Request Corporate Quote</Link>
+              <Button size="lg" variant="secondary" onClick={() => setShowQuoteDialog(true)}>
+                Request Corporate Quote
               </Button>
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary" asChild>
-                <Link to="/#contact">Discuss Requirements</Link>
+              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary bg-transparent" onClick={() => setShowQuoteDialog(true)}>
+                Discuss Requirements
               </Button>
             </div>
           </div>
@@ -191,6 +200,11 @@ const CorporateEvents = () => {
       </section>
 
       <Footer />
+      
+      <QuoteDialog 
+        open={showQuoteDialog} 
+        onOpenChange={setShowQuoteDialog} 
+      />
     </div>
   );
 };

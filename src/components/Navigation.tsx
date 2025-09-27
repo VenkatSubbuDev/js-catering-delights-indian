@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 import { QuoteDialog } from "./QuoteDialog";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [showQuoteDialog, setShowQuoteDialog] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const navItems = [
     { name: "Home", href: "#home" },
@@ -20,6 +21,12 @@ export function Navigation() {
   ];
 
   useEffect(() => {
+    // Reset active section when not on home page
+    if (location.pathname !== '/') {
+      setActiveSection('');
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -37,12 +44,19 @@ export function Navigation() {
     return () => {
       sections.forEach(section => section && observer.unobserve(section));
     };
-  }, []);
+  }, [location.pathname]);
 
   const scrollToSection = (href: string) => {
-    // If we're not on the home page, navigate to home first
-    if (location.pathname !== '/') {
-      window.location.href = '/' + href;
+    // If we're on a service page, navigate to home with hash
+    if (location.pathname.startsWith('/services/')) {
+      navigate('/' + href);
+      // Use setTimeout to ensure navigation completes before scrolling
+      setTimeout(() => {
+        const element = document.getElementById(href.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
       return;
     }
 
